@@ -91,5 +91,12 @@ export const EditTodoContainer = styled.div`
     .input {
       width: 75%;
     }
+
+    .bottombuttons {
+      padding: 20px 30px;
+      display: flex;
+      justify-content: space-between;
+      width: 80%;
+    }
   }
 `;
