@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { TodoContainer } from "./todo.styles";
 import UserAvatar from "../../assets/useravatar.svg";
 import Cup from "../../assets/cup.svg";
@@ -7,6 +7,25 @@ import TodoUnChecked from "../../assets/todounchecked.svg";
 import ActionButton from "../../assets/actionbutton.svg";
 
 const Todo = () => {
+  const todos = [
+    {
+      id: 1,
+      checked: true,
+      text: "Training at the Gym",
+    },
+    {
+      id: 2,
+      checked: false,
+      text: "Play Paddle with friends",
+    },
+    {
+      id: 3,
+      checked: false,
+      text: "Burger BBQ with family",
+    },
+  ];
+  const [todo, setTodo] = useState(todos);
+  const toggleChecked = () => {};
   return (
     <TodoContainer>
       <div className="todocontainer">
@@ -27,31 +46,17 @@ const Todo = () => {
         </div>
 
         <div className="todobody">
-          <div className="todocard">
-            <div className="tododetails">
-              <img src={TodoChecked} alt="" />
-              <div className="todotext">
-                <s>Training at the Gym</s>
+          {todo.map((t) => {
+            return (
+              <div key={t.id} className="todocard">
+                <div className="tododetails">
+                  <img src={t.checked ? TodoChecked : TodoUnChecked} alt="" />
+                  <div className="todotextblue">{t.text}</div>
+                </div>
+                <div className="editbutton">Edit</div>
               </div>
-            </div>
-            <div className="editbutton">Edit</div>
-          </div>
-
-          <div className="todocard">
-            <div className="tododetails">
-              <img src={TodoUnChecked} alt="" />
-              <div className="todotextblue">Training at the Gym</div>
-            </div>
-            <div className="editbutton">Edit</div>
-          </div>
-
-          <div className="todocard">
-            <div className="tododetails">
-              <img src={TodoUnChecked} alt="" />
-              <div className="todotextblue">Burger BBQ with family</div>
-            </div>
-            <div className="editbutton">Edit</div>
-          </div>
+            );
+          })}
         </div>
       </div>
 
